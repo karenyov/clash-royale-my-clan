@@ -1,0 +1,23 @@
+<app-layout>
+  <div class="container">
+
+    <app-loader *ngIf="!isLoaded"></app-loader>
+
+    <div class="row">
+      <h2>{{ clan?.name }}</h2>
+      <small class="score">{{ clan?.score }}</small>
+    </div>
+
+    <div class="row">
+      <p class="font-italic">
+        "{{ clan?.description }}"
+      </p>
+    </div>
+
+    <div class="row">
+
+      
+    </div>
+
+  </div>
+</app-layout>
