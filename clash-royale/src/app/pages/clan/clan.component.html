@@ -1,22 +1,75 @@
 <app-layout>
   <div class="container">
 
+    <h4>Clã - Clash Royale</h4>
+    <br>
+
     <app-loader *ngIf="!isLoaded"></app-loader>
+    <p *ngIf="error">{{ error }}</p>
 
-    <div class="row">
-      <h2>{{ clan?.name }}</h2>
-      <small class="score">{{ clan?.score }}</small>
-    </div>
+    <div *ngIf="!error && isLoaded">
 
-    <div class="row">
-      <p class="font-italic">
-        "{{ clan?.description }}"
-      </p>
-    </div>
+      <div class="row">
+        <div class="col-sm-1">
+          <img src="{{ clan.badge.image }}" width="50" height="50">
+        </div>
+        <div class="col-sm-8">
+          <h2>{{ clan?.name }}</h2>
+        </div>
+        <div class="col-sm-3">
+          <h4 class="score">{{ clan?.score }}</h4>
+        </div>
+      </div>
+      <br>
 
-    <div class="row">
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="font-italic">
+            "{{ clan?.description }}"
+          </p>
+          <b>Troféus Requeridos: </b>{{ clan?.requiredScore }}
+          <br>
+          <b>Doações: </b>{{ clan?.donations }}
+          <br>
+          <b>Local: </b>{{ clan?.location?.name }}
+          <br>
+        </div>
+      </div>
 
-      
+      <div class="card shadow p-3 mb-5 bg-white rounded" style="margin-top: 30px;">
+        <h4>Membros
+          <small class="float-sm-right" id="member-count">{{ clan?.memberCount }}</small>
+        </h4>
+        <div class="card-body">
+          <table datatable class="row-border hover table">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Role</th>
+                <th>Level</th>
+                <th>Troféus</th>
+                <th>Doações Feitas</th>
+                <th>Doações Recebidas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let member of clan?.members">
+                <td>
+                  <a href="">{{ member.name }}</a>
+                </td>
+                <td>{{ member.role }}</td>
+                <td class="level-experience">{{ member.expLevel }}</td>
+                <td>{{ member.trophies }}
+                  <img src="/assets/images/player/trophy.png" width="18" height="18">
+                </td>
+                <td>{{ member.donations }}</td>
+                <td>{{ member.donationsReceived }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </div>
 
   </div>

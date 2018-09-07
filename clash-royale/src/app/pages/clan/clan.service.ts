@@ -6,7 +6,7 @@ import { AppSettings } from '../../config/app-settings';
 @Injectable()
 export class ClanService {
 
-  private url: string = AppSettings.API_ENDPOINT + '/clan/' + AppSettings.CLAN_TAG + "?exclude=members";
+  private url: string = AppSettings.API_ENDPOINT + '/clans/' + AppSettings.CLAN_TAG + "?exclude=members";
 
   constructor(private http: HttpClient) { }
 

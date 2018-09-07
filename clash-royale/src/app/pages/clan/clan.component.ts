@@ -9,6 +9,7 @@ import { ClanService } from './clan.service';
 export class ClanComponent implements OnInit {
 
   public isLoaded: boolean;
+  public error: string;
   clan: any = [];
 
   constructor(private clanService: ClanService) { }
@@ -22,6 +23,10 @@ export class ClanComponent implements OnInit {
     this.clanService.getClan().subscribe(
       data => {
         this.clan = data;
+        this.isLoaded = true;
+      },
+      err => {
+        this.error = err.error.message;
         this.isLoaded = true;
       }
     );
