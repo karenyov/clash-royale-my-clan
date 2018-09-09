@@ -16,7 +16,8 @@
         <h2>{{ clan?.name }}</h2>
       </div>
       <div class="col-sm-3">
-        <h4 class="score">{{ clan?.score }}</h4>
+        <h4 class="score">
+          {{ clan?.score }}</h4>
       </div>
     </div>
     <br>
@@ -26,23 +27,49 @@
         <p class="font-italic">
           "{{ clan?.description }}"
         </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="/assets/images/ui/trophy-ribbon.png" width="18" height="18">
+        <b>Troféus: </b>{{ clan?.score }}
+      </div>
+      <div class="col-sm-4">
+        <img src="/assets/images/ui/trophies-required.png" width="18" height="18">
         <b>Troféus Requeridos: </b>{{ clan?.requiredScore }}
-        <br>
+      </div>
+      <div class="col-sm-4">
+        <img src="/assets/images/ui/cards.png" width="18" height="18">
         <b>Doações: </b>{{ clan?.donations }}
-        <br>
+      </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="/assets/images/ui/social.png" width="18" height="18">
+        <b>Total Membros: </b>{{ clan?.memberCount }}
+      </div>
+      <div class="col-sm-4">
+        <img src="/assets/images/ui/people.png" width="18" height="18">
+        <b>Tipo: </b>{{ clan?.type }}
+      </div>
+      <div class="col-sm-4">
+        <img src="/assets/images/flags/{{ clan.location.code | lowercase }}.png" width="18" height="12">
         <b>Local: </b>{{ clan?.location?.name }}
-        <br>
       </div>
     </div>
 
     <div class="card shadow p-3 mb-5 bg-white rounded" style="margin-top: 30px;">
-      <h4>Membros
+      <h4>
+        <img src="/assets/images/ui/social.png" width="30" height="30"> Membros
         <small class="float-sm-right" id="member-count">{{ clan?.memberCount }}</small>
       </h4>
       <div class="card-body">
         <table datatable class="row-border hover table">
           <thead>
             <tr>
+              <th>Rank</th>
               <th>Nome</th>
               <th>Role</th>
               <th>Level</th>
@@ -53,16 +80,21 @@
           </thead>
           <tbody>
             <tr *ngFor="let member of clan?.members">
+              <td>{{ member.rank }}</td>
               <td>
                 <a href="">{{ member.name }}</a>
               </td>
               <td>{{ member.role }}</td>
               <td class="level-experience">{{ member.expLevel }}</td>
               <td>{{ member.trophies }}
-                <img src="/assets/images/player/trophy.png" width="18" height="18">
+                <img src="https://royaleapi.github.io/cr-api-assets/arenas/arena{{ member.arena.arenaID }}.png" width="25" height="25">
               </td>
-              <td>{{ member.donations }}</td>
-              <td>{{ member.donationsReceived }}</td>
+              <td>{{ member.donations }}
+                <img src="/assets/images/icon/donated.png" width="25" height="25">
+              </td>
+              <td>{{ member.donationsReceived }}
+                <img src="/assets/images/icon/received.png" width="25" height="25">
+              </td>
             </tr>
           </tbody>
         </table>
