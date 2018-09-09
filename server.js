@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/clash-royale-my-clan'));
+app.use(express.static('./clash-royale-my-clan/dist'));
 
 app.get('/*all', function(req,res) {
     
-res.sendFile(path.join('./dist/clash-royale-my-clan/index.html'));
+res.sendFile(path.join('./clash-royale-my-clan/dist/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
