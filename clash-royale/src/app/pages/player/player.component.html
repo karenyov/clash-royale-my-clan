@@ -1,0 +1,14 @@
+<div class="container">
+
+  <h4>Jogador - Clash Royale</h4>
+  <br>
+
+  <app-loader *ngIf="!isLoaded"></app-loader>
+  <p *ngIf="error">{{ error }}</p>
+
+  <div *ngIf="!error && isLoaded">
+
+
+  </div>
+
+</div>

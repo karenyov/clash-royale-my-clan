@@ -7,14 +7,16 @@ import { AppComponent } from './app.component';
 import { UiModule } from './ui/ui.module';
 import { ClanComponent } from './pages/clan/clan.component';
 import { ClanService } from './pages/clan/clan.service';
-import { LoaderComponent } from './components/loader/loader.component';
+import { PlayerComponent } from './pages/player/player.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ClanComponent,
-    LoaderComponent
+    LoaderComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     HttpClientModule,
     DataTablesModule
   ],
-  providers: [ClanService],
+  providers: [
+    ClanService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
